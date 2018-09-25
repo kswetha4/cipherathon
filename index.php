@@ -94,6 +94,7 @@ mysqli_select_db($con,'hackathon');
 						$coupon_code=$_POST['coupon_code'];
 						$_SESSION['coupon_code']=$coupon_code;
 						$coupon_code=$_SESSION['coupon_code'];
+						if($coupon_code){
 					$sql="SELECT sponse_code FROM sponser WHERE sponse_code='$coupon_code'";	
 					$res=mysqli_query($con,$sql);
 						if(mysqli_num_rows($res)>0){
@@ -110,6 +111,7 @@ mysqli_select_db($con,'hackathon');
 										echo "<script type='text/javascript'>window.location.href = 'index.php'</script>";				
 							}
 				}
+			
 				else {
 					$sql="INSERT INTO rsvp VALUES('$tName','$team','$m1','$email1','$contact1','$m2','$email2','$contact2','$m3','$email3','$contact3','$m4','$email4','$contact4','')";
 							$res=mysqli_query($con,$sql);			
@@ -120,6 +122,7 @@ mysqli_select_db($con,'hackathon');
 							}
 				}	
 		}
+	}
 	
 		// CODE FOR CLOSE BUTTON
 		if(isset($_POST['close']))
