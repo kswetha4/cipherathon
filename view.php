@@ -43,9 +43,6 @@ if(isset($_GET['name']) ){
           <form>
             <center><label for='name1'>Team Name</label></center>
             <center><td><?Php echo $team_name;?></td></center></br>
-    
-           
-              
             <label for='Member1'>Member1</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
@@ -60,8 +57,11 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='<?php echo $m1email;?>' disabled>
             </div> 
+            <hr>
             <?php 
+            $i=1;
             if($m2name){
+                $i++;
            echo " <label for='Member2'>Member2</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
@@ -77,9 +77,10 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='$m2email' disabled>
             </div>";}?>
+            <hr>
             <?php 
             if($m3name){
-
+                $i++;
            echo " <label for='Member3'>Member3</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
@@ -95,9 +96,10 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='$m3email' disabled>
             </div> ";}?> 
+            <hr>
             <?php 
             if($m4name){
-
+                $i++;
            echo " <label for='Member4'>Member4</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
@@ -111,8 +113,10 @@ if(isset($_GET['name']) ){
             <div class='form-group'>
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='$m4email' disabled>
-            </div> ";}?>
-                      
+            </div> ";
+           ;}
+           ?>
+                   
             </form>
              <?php
 

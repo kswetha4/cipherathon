@@ -73,19 +73,33 @@ include("configdb.php");
                         while($row=mysqli_fetch_assoc($res)){
                          echo '<tr>';
                            echo '<td style="text-align: center">'.$row['team_name'].'</td>';
-                           echo '<td style="text-align: center">'.$row['number'].'</td>';  
+                        //    echo '<td style="text-align: center">'.$row['number'].'</td>';  
                            $tname=$row['team_name']; 
+                            $i=1;
                            $m1name=$row['m1_name'];
                            $m1contact=$row['m1_contact'];
                            $m1email=$row['m1_email'];
-                        
+                           $m2name=$row['m2_name'];
+                           if($m2name){
+                               $i++;
+                           }
+                           $m2contact=$row['m2_contact'];
+                           $m2email=$row['m2_email']; 
+                           $m3name=$row['m3_name'];
+                           if($m3name){
+                               $i++;
+                           }
+                           $m3email=$row['m3_email'];
+                           $m3contact=$row['m3_contact']; 
+                           $m4name=$row['m4_name'];
+                           if($m4name){
+                               $i++;
+                           }
+                           $m4contact=$row['m4_contact'];
+                           $m4email=$row['m4_email'];
+                            echo '<td>'.$i.'</td>';
                             echo '<td> <a href="view.php?name=' . $tname .'">View Details</a></td>';
                             ?>
-                            <!-- <td><button type="button" name="submit" value=<?php echo $tname;?> 
-   class="btn btn-warning" data-toggle="modal" data-target="#view_details-<?php echo $tname;?>">	view</button></td> -->
-
-                        <!-- //  echo '  <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="view_details.php?name='.$tname.'">View -->
-                        <!-- //     Details</button></td>'; -->
                        </tr><?php         
                         }
                     }?>
@@ -93,56 +107,7 @@ include("configdb.php");
             
             </div>
         </div>
-    </div>
-    <!-- End OF Details Form -->
-
-    <!-- Modal --> 
-    <div class="modal fade" id="view_details-<?php echo $tname;?>">
-<div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="view_details-" style="text-align: center">Team Name</h4>
-                </div>
-                <div class="modal-body">';
-              
-</div>
-
-<!-- <div class="modal fade" id="view_details" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> -->
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel" style="text-align: center">Team Name</h4>
-                </div>
-                <div class="modal-body">';
-              
-                  
-             <form>
-                     <label for='Member1'>Member1</label>
-                    <div class='form-group'>
-                            <label for='name1'>Name</label>
-                        <input type='text' class='form-control' id='1' Value='$team_name' disabled>
-                     </div>
-                    <div class='form-group'>
-                        <label for='contact1'>Contact</label>
-                         <input type='tel' class='form-control' id='contact1' value='$m1name' disabled>
-                       </div>
-                        <div class='form-group'>
-                               <label for='email1'>Email</label>
-                          <input type='email' class='form-control' id='email1' value='$m1email' disabled>
-                          </div>
-                   </form> 
-                   
-                
-                </div>
-                
-            </div>
-        </div>
-    </div>
-
-    <!-- End Of Modal -->
-
+    </div>  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->

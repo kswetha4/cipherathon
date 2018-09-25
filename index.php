@@ -15,12 +15,7 @@ mysqli_select_db($con,'hackathon');
 		$team=$_POST['team'];
 		$_SESSION['team']=$team;
 	}
-		
-	if(isset($_POST['number'])){
-		$number=$_POST['number'];
-		$_SESSION['number']=$number;
-	}
-	
+			
 	if(isset($_POST['m1'])){
 		$m1=$_POST['m1'];
 		$_SESSION['m1']=$m1;
@@ -102,7 +97,7 @@ mysqli_select_db($con,'hackathon');
 					$sql="SELECT sponse_code FROM sponser WHERE sponse_code='$coupon_code'";	
 					$res=mysqli_query($con,$sql);
 						if(mysqli_num_rows($res)>0){
-							$sql="INSERT INTO rsvp VALUES('$tName','$team','$m1','$email1','$contact1','$number','$m2','$email2','$contact2','$m3','$email3','$contact3','$m4','$email4','$contact4','$coupon_code')";
+							$sql="INSERT INTO rsvp VALUES('$tName','$team','$m1','$email1','$contact1','$m2','$email2','$contact2','$m3','$email3','$contact3','$m4','$email4','$contact4','$coupon_code')";
 							$res=mysqli_query($con,$sql);			
 							if($res)
 							{
@@ -116,7 +111,7 @@ mysqli_select_db($con,'hackathon');
 							}
 				}
 				else {
-					$sql="INSERT INTO rsvp VALUES('$tName','$team','$m1','$email1','$contact1','$number','$m2','$email2','$contact2','$m3','$email3','$contact3','$m4','$email4','$contact4','')";
+					$sql="INSERT INTO rsvp VALUES('$tName','$team','$m1','$email1','$contact1','$m2','$email2','$contact2','$m3','$email3','$contact3','$m4','$email4','$contact4','')";
 							$res=mysqli_query($con,$sql);			
 							if($res)
 							{
@@ -609,16 +604,6 @@ mysqli_select_db($con,'hackathon');
 										<input type="tel" class="form-control" id="contact1" name="contact1" placeholder="Enter Contact Number" required>
 									</div>
 									<hr>
-									<div class="form-group">
-										<label for="number">Number of Members
-											<sup style="color:red">*</sup>
-										</label>
-										<select id="number" name="number" class="form-control">
-											<option id="1" value="1">1</option>
-											<option id="2" value="2">2</option>
-											<option id="3" value="3">3</option>
-										</select>
-									</div>
 									<label for="member1">Member 2</label>
 									<hr>
 									<div class="form-group">
