@@ -39,7 +39,9 @@ if(isset($_GET['name']) ){
             $m3contact=$row['m3_contact']; 
             $m4name=$row['m4_name'];
             $m4contact=$row['m4_contact'];
-            $m4email=$row['m4_email'];?>
+            $m4email=$row['m4_email'];
+            $code=$row['coupon_name'];
+            ?>
           <form>
             <center><label for='name1'>Team Name</label></center>
             <center><td><?Php echo $team_name;?></td></center></br>
@@ -57,12 +59,11 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='<?php echo $m1email;?>' disabled>
             </div> 
-            <hr>
             <?php 
             $i=1;
             if($m2name){
                 $i++;
-           echo " <label for='Member2'>Member2</label>
+            echo " <hr><label for='Member2'>Member2</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
            <input type='text' class='form-control' id='1' Value='$m2name' disabled>
@@ -77,11 +78,11 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='$m2email' disabled>
             </div>";}?>
-            <hr>
             <?php 
             if($m3name){
                 $i++;
-           echo " <label for='Member3'>Member3</label>
+            echo " <hr>
+            <label for='Member3'>Member3</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
                 <input type='text' class='form-control' id='1' Value='$m3name' disabled>
@@ -96,11 +97,12 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='$m3email' disabled>
             </div> ";}?> 
-            <hr>
+           
             <?php 
             if($m4name){
                 $i++;
-           echo " <label for='Member4'>Member4</label>
+           echo " <hr>
+           <label for='Member4'>Member4</label>
             <div class='form-group'>
             <label for='name1'>Name</label>
                 <input type='text' class='form-control' id='1' Value='$m4name' disabled>
@@ -114,8 +116,15 @@ if(isset($_GET['name']) ){
             <label for='name1'>Email</label>
                 <input type='text' class='form-control' id='1' Value='$m4email' disabled>
             </div> ";
-           ;}
-           ?>
+           ;}?>
+           <?php 
+           if($code){
+           echo "<hr>
+           <div class='form-group'>
+           <label for='name1'>Coupon Code</label>
+               <input type='text' class='form-control' id='1' Value='$code' disabled>
+           </div>
+           ";}?>
                    
             </form>
              <?php

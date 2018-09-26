@@ -3,36 +3,44 @@ session_start();
 $con=mysqli_connect("localhost","root","") or die("unable to connect");
 mysqli_select_db($con,"hackathon");
 if(isset($_POST['insert'])){
+    if(!empty($_POST['sponser_title']) && $_POST['person_name'] && $_POST['sponser_number'] && $_POST['sponser_code'] && $_POST['sponser_email']){
     if(isset($_POST['sponser_title'])){
-        $_SESSION['sponser_title']=$_POST['sponser_title'];
-        $sponser_title=$_SESSION['sponser_title'];
+        $sponser_title =$_POST['sponser_title'];
             }
             if(isset($_POST['person_name'])){
-                $_SESSION['person_name']=$_POST['person_name'];
-                $person_name=$_SESSION['person_name'];
+                $person_name=  $_POST['person_name'];
                     }
                     if(isset($_POST['sponser_number'])){
-                        $_SESSION['sponser_number']=$_POST['sponser_number'];
-                        $sponser_number=$_SESSION['sponser_number'];
+                        $sponser_number=$_POST['sponser_number'];
                             }
                             if(isset($_POST['sponser_code'])){
                                 $_SESSION['sponser_code']=$_POST['sponser_code'];
                                 $sponser_code=$_SESSION['sponser_code'];
                                     }
-
-                                    if(isset($_POST['sponser_email'])){
-                                        $_SESSION['sponser_email']=$_POST['sponser_email'];
-                                        $sponser_email=$_SESSION['sponser_email'];
-                                            }
-$sql="INSERT INTO sponser VALUES('$sponser_title','$sponser_code','$person_name','$sponser_number','$sponser_email')";
-$res=mysqli_query($con,$sql);
-if($res){
-
-    echo "<script>alert('your details has been submited')</script>";
-    echo "<script type='text/javascript'>window.location.href = 'dashboard.php'    </script>";
+                                if(isset($_POST['sponser_email'])){
+                                    $sponser_email=$_POST['sponser_email'];
+                                }
+        $sql="SELECT * FROM sponser WHERE sponse_code='$sponser_code'";
+        $res=mysqli_query($con,$sql);
+            if(mysqli_num_rows($res)>0){
+                echo "<script>alert('sponser code already exist')</script>";
+                echo "<script>window.location.href='sponser.php'</script>";
+            }
+            else {                                         
+                $sql="INSERT INTO sponser VALUES('$sponser_title','$sponser_code','$person_name','$sponser_number','$sponser_email')";
+                $res=mysqli_query($con,$sql);
+                    if($res){
+                        echo "<script>alert('your details has been submited')</script>";
+                        echo "<script>window.location.href = 'sponser.php'    </script>";
+                    }
+            }
+}
+else{
+        echo '<script>alert("please fill the fields")</script>';
+     echo "<script>window.location.href = 'sponser.php'    </script>";
 }
 }
-// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,11 +58,6 @@ if($res){
 <body>
     <div class="container">
         <form action="sponser.php" method="POST" class="reg">
-            <!-- <div class="form-group">
-                <label for="Fullname">Company Name
-                </label>
-                <input type="text" class="form-control" name="cname" />
-            </div> -->
             <div class="form-group ">
                 <label for="Sponser Title">Sponser Title</label>
                 <input type="text" class="form-control" name="sponser_title" />
